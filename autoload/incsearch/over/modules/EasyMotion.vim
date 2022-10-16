@@ -24,6 +24,7 @@ function! s:module._easymotion(cmdline) abort
     call histadd('/', a:cmdline.getline())
     let @/ = pattern
   endif
+  echo cmdline._mode
   let config = {
   \   'pattern': pattern,
   \   'visualmode': s:is_visual(a:cmdline._mode),
