@@ -14,6 +14,7 @@ let s:module = {
 \   },
 \ }
 
+  " mode is nomal and terminal
 function! s:module._easymotion(cmdline) abort
   let [raw_pattern, _] = a:cmdline._parse_pattern()
   if raw_pattern is# ''
@@ -28,7 +29,7 @@ function! s:module._easymotion(cmdline) abort
   \   'visualmode': s:is_visual(a:cmdline._mode),
   \   'direction': 2,
   \   'accept_cursor_pos': 1,
-  \   'overwin': self.config.overwin && a:cmdline._mode is# 'n'
+  \   'overwin': self.config.overwin && (a:cmdline._mode is# 'n' || a:cmdline._mode is# 't'),
   \ }
   call incsearch#highlight#off()
   call EasyMotion#go(config)
