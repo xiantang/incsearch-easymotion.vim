@@ -24,13 +24,12 @@ function! s:module._easymotion(cmdline) abort
     call histadd('/', a:cmdline.getline())
     let @/ = pattern
   endif
-  echo cmdline._mode
   let config = {
   \   'pattern': pattern,
   \   'visualmode': s:is_visual(a:cmdline._mode),
   \   'direction': 2,
   \   'accept_cursor_pos': 1,
-  \   'overwin': 1,
+  \   'overwin': self.config.overwin && (a:cmdline._mode is# 'n' || a:cmdline._mode is# 't'),
   \ }
   call incsearch#highlight#off()
   call EasyMotion#go(config)
