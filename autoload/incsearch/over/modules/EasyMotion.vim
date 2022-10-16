@@ -29,7 +29,7 @@ function! s:module._easymotion(cmdline) abort
   \   'visualmode': s:is_visual(a:cmdline._mode),
   \   'direction': 2,
   \   'accept_cursor_pos': 1,
-  \   'overwin': self.config.overwin && (a:cmdline._mode is# 'n' || a:cmdline._mode is# 't'),
+  \   'overwin': 1,
   \ }
   call incsearch#highlight#off()
   call EasyMotion#go(config)
